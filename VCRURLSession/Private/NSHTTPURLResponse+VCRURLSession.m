@@ -7,7 +7,11 @@
 //
 
 #import "NSHTTPURLResponse+VCRURLSession.h"
+#if TARGET_OS_IPHONE
 #import <MobileCoreServices/MobileCoreServices.h>
+#else
+#import <SystemConfiguration/SystemConfiguration.h>
+#endif
 
 static NSString *VCRURLSessionResponseBodyKey = @"body";
 static NSString *VCRURLSessionResponseHeadersKey = @"headers";
