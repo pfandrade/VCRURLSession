@@ -70,6 +70,15 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSURLSession *)prepareURLSession:(NSURLSession *)session;
 
 /**
+ *  Prepare a `NSURLSessionConfiguration` for recording/replaying HTTP requests and responses.
+ *
+ *  @param session `NSURLSessionConfiguration` instance
+ *
+ *  @return `NSURLSessionConfiguration` instance
+ */
++ (void)prepareURLSessionConfiguration:(NSURLSessionConfiguration *)configuration;
+
+/**
  *  Prepare a `NSURLSession` for recording/replaying HTTP requests and responses.
  *
  *  @param session `NSURLSession` instance

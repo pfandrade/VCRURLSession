@@ -27,13 +27,18 @@
     return classes;
 }
 
++ (void)prepareURLSessionConfiguration:(NSURLSessionConfiguration *)configuration
+{
+    configuration.protocolClasses = [[self protocolClasses] arrayByAddingObjectsFromArray:configuration.protocolClasses];
+    configuration.URLCache = nil;
+}
+
 + (NSURLSession *)prepareURLSession:(NSURLSession *)session
                            delegate:(id<NSURLSessionDelegate> _Nullable)delegate
                       delegateQueue:(NSOperationQueue *_Nullable)queue;
 {
     NSURLSessionConfiguration *configuration = session.configuration.copy;
-    configuration.protocolClasses = [[self protocolClasses] arrayByAddingObjectsFromArray:configuration.protocolClasses];
-    configuration.URLCache = nil;
+    [self prepareURLSessionConfiguration:configuration];
     return [NSURLSession sessionWithConfiguration:configuration delegate:delegate delegateQueue:queue];
 }
 
